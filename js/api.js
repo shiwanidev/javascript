@@ -30,6 +30,7 @@ $(document).ready(function () {
     }
    
   });
+
  //Calling the fetchComment function whenever User clicks on Show Comment Button
   $(".showComment").click(async function () {
     let postTable = $("#postTable");
@@ -57,6 +58,7 @@ $(document).ready(function () {
     }
   });
 });
+
 //Function to Fetch Post Items
 const fetchPost = () => {
   //Calling the fetch Posts API
@@ -77,7 +79,7 @@ const fetchPost = () => {
         titleHead = $(titleHead).append(title);
         titleRow = $(titleRow).append(titleHead);
         table = $(table).append(titleRow);
-      //Creating table rows and appending the Fetched Posts keys inside that
+      //Creating table rows and appending the Fetched Post keys inside that
         var trHead = "<tr></tr>";
         $(keys).each((index, item) => {
           var th = "<th></th>";
@@ -85,7 +87,7 @@ const fetchPost = () => {
           trHead = $(trHead).append(th);
         });
         table = $(table).append(trHead);
-          //Creating table datas and appending the Fetched Posts Items inside that
+          //Creating table datas and appending the Fetched Post Items inside that
         for (var i = 0; i < data.length; i++) {
           var tr = "<tr></tr>";
           $(keys).each((index, item) => {
@@ -104,7 +106,8 @@ const fetchPost = () => {
       showErrorMsg(".errorMessage", err, 2000);
     });
 };
-//Function to Fetch Post Items
+
+//Function to Fetch Comment Items
 const fetchComments = () => {
   //Calling the fetch Comments API
   fetch("https://jsonplaceholder.typicode.com/comments")
@@ -114,9 +117,9 @@ const fetchComments = () => {
       var data = json;
       if (data.length > 0) {
         if (data.length > 0) {
-           //Grabbing and storing the keys of Fetched Posts
+           //Grabbing and storing the keys of Fetched Comment
           var keys = Object.keys(data[0]);
-             //Creating postTable to display Post Items
+             //Creating postTable to display Comment Items
           var table = `<table id="commentTable"></table>`
             //Creating title for the table 
           var titleRow = "<tr></tr>";
@@ -125,7 +128,7 @@ const fetchComments = () => {
           titleHead = $(titleHead).append(title);
           titleRow = $(titleRow).append(titleHead);
           table = $(table).append(titleRow);
-  //Creating table rows and appending the Fetched Posts keys inside that
+  //Creating table rows and appending the Fetched Comment keys inside that
           var trHead = "<tr></tr>";
           $(keys).each((index, item) => {
             var th = "<th></th>";
@@ -133,7 +136,7 @@ const fetchComments = () => {
             trHead = $(trHead).append(th);
           });
           table = $(table).append(trHead);
-              //Creating table datas and appending the Fetched Posts Items inside that
+              //Creating table datas and appending the Fetched Comment Items inside that
           for (var i = 0; i < data.length; i++) {
             var tr = "<tr></tr>";
             $(keys).each((index, item) => {
@@ -153,6 +156,7 @@ const fetchComments = () => {
       showErrorMsg(".errorMessage", err, 2000);
     });
 };
+
 //Function to show the Error Message
 /**
  * @param {Object} el HTML element inside which we need to show the Error Message
